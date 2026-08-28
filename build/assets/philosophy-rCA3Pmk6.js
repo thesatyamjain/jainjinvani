@@ -1,12 +1,4 @@
-// Auto-generated comprehensive Jain Philosophy & Tattva Gyan Data
-export const PhilosophyData = {
-  "karma-theory": {
-    "id": "karma-theory",
-    "category": "philosophy",
-    "title": "कर्म सिद्धान्त एवं आठ कर्म",
-    "subtitle": "आत्मा और कर्म पुद्गल का संबंध, आठ मूल प्रकृतियाँ",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+const t={"karma-theory":{id:"karma-theory",category:"philosophy",title:"कर्म सिद्धान्त एवं आठ कर्म",subtitle:"आत्मा और कर्म पुद्गल का संबंध, आठ मूल प्रकृतियाँ",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "जीव-परिणाम-हेदुं कम्मत्तं पुग्गला परिणमंति।<br>
         पुग्गल-कम्म-णिमित्तं तहेव जीवो वि परिणमदि॥"
@@ -39,16 +31,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "six-dravyas": {
-    "id": "six-dravyas",
-    "category": "philosophy",
-    "title": "षट्द्रव्य स्वरूप",
-    "subtitle": "सृष्टि के अनादि-अनंत छह मूल घटक",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"six-dravyas":{id:"six-dravyas",category:"philosophy",title:"षट्द्रव्य स्वरूप",subtitle:"सृष्टि के अनादि-अनंत छह मूल घटक",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "गुणाणां समूहो द्रव्यम्। उत्पादव्ययध्रौव्ययुक्तं सत्।"
     </div>
@@ -70,16 +53,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "jiva-tattva": {
-    "id": "jiva-tattva",
-    "category": "philosophy",
-    "title": "जीव तत्त्व",
-    "subtitle": "ज्ञान-दर्शनमय चेतन आत्म तत्त्व",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"jiva-tattva":{id:"jiva-tattva",category:"philosophy",title:"जीव तत्त्व",subtitle:"ज्ञान-दर्शनमय चेतन आत्म तत्त्व",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "उपयोगो लक्षणम्। चेतनालक्षणो जीवः।"
     </div>
@@ -98,16 +72,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "ajiva-tattva": {
-    "id": "ajiva-tattva",
-    "category": "philosophy",
-    "title": "अजीव तत्त्व",
-    "subtitle": "चेतना रहित जड़ तत्त्व (पुद्गल, धर्म, अधर्म, आकाश, काल)",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"ajiva-tattva":{id:"ajiva-tattva",category:"philosophy",title:"अजीव तत्त्व",subtitle:"चेतना रहित जड़ तत्त्व (पुद्गल, धर्म, अधर्म, आकाश, काल)",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "अचेतनं द्रव्यमजीवम्।"
     </div>
@@ -122,16 +87,7 @@ export const PhilosophyData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">जब तक जीव अजीव (शरीर) को अपना मानता है, तब तक संसार में भटकता है। जब भेदविज्ञान द्वारा शरीर को भिन्न और आत्मा को भिन्न जान लेता है, तभी मोक्षमार्ग प्रारंभ होता है।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "asrava-tattva": {
-    "id": "asrava-tattva",
-    "category": "philosophy",
-    "title": "आस्रव तत्त्व",
-    "subtitle": "आत्मा में कर्म पुद्गलों का आगमन",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"asrava-tattva":{id:"asrava-tattva",category:"philosophy",title:"आस्रव तत्त्व",subtitle:"आत्मा में कर्म पुद्गलों का आगमन",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "कायवाङ्मनः कर्म योगः। स आस्रवः॥"
     </div>
@@ -149,16 +105,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "bandha-tattva": {
-    "id": "bandha-tattva",
-    "category": "philosophy",
-    "title": "बंध तत्त्व",
-    "subtitle": "आत्मा और कर्म परमाणुओं का परस्पर एक क्षेत्रावगाह होना",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"bandha-tattva":{id:"bandha-tattva",category:"philosophy",title:"बंध तत्त्व",subtitle:"आत्मा और कर्म परमाणुओं का परस्पर एक क्षेत्रावगाह होना",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "सकषायत्वाज्जीवः कर्मणो योग्यान् पुद्गलानादत्ते स बन्धः।"
     </div>
@@ -178,16 +125,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "samvara-tattva": {
-    "id": "samvara-tattva",
-    "category": "philosophy",
-    "title": "संवर तत्त्व",
-    "subtitle": "नवीन कर्मों के आगमन को रोकना",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"samvara-tattva":{id:"samvara-tattva",category:"philosophy",title:"संवर तत्त्व",subtitle:"नवीन कर्मों के आगमन को रोकना",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "आस्रवनिरोधः संवरः।"
     </div>
@@ -202,16 +140,7 @@ export const PhilosophyData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">३ गुप्ति (मन, वचन, काय संयम), ५ समिति (ईर्या, भाषा आदि), १० उत्तम धर्म (क्षमा, मार्दव आदि), १२ अनुप्रेक्षा (अनित्य आदि भावनाएँ), २२ परीषह जय और ५ प्रकार का चारित्र संवर के परम साधन हैं।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "nirjara-tattva": {
-    "id": "nirjara-tattva",
-    "category": "philosophy",
-    "title": "निर्जरा तत्त्व",
-    "subtitle": "पूर्व संचित कर्मों का आत्मा से एकदेश क्षय",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"nirjara-tattva":{id:"nirjara-tattva",category:"philosophy",title:"निर्जरा तत्त्व",subtitle:"पूर्व संचित कर्मों का आत्मा से एकदेश क्षय",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "तपसा निर्जरा च।"
     </div>
@@ -229,16 +158,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "moksha-tattva": {
-    "id": "moksha-tattva",
-    "category": "philosophy",
-    "title": "मोक्ष तत्त्व",
-    "subtitle": "आठों कर्मों से आत्मा की पूर्ण एवं शाश्वत मुक्ति",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"moksha-tattva":{id:"moksha-tattva",category:"philosophy",title:"मोक्ष तत्त्व",subtitle:"आठों कर्मों से आत्मा की पूर्ण एवं शाश्वत मुक्ति",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "कृत्स्नकर्मविप्रमोक्षो मोक्षः।"
     </div>
@@ -246,16 +166,7 @@ export const PhilosophyData = {
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         समस्त घातिया और अघातिया आठों कर्मों का समूल नाश हो जाना ही <strong>मोक्ष</strong> है। मोक्ष प्राप्ति के उपरांत आत्मा सिद्धशिला पर अनंत काल तक अनंत ज्ञान, अनंत दर्शन, अनंत सुख और अनंत वीर्य में लीन रहती है।
     </p>
-</div>`
-  },
-
-  "twelve-vratas": {
-    "id": "twelve-vratas",
-    "category": "philosophy",
-    "title": "श्रावक के बारह व्रत",
-    "subtitle": "गृहस्थ के ५ अणुव्रत, ३ गुणव्रत एवं ४ शिक्षाव्रत",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"twelve-vratas":{id:"twelve-vratas",category:"philosophy",title:"श्रावक के बारह व्रत",subtitle:"गृहस्थ के ५ अणुव्रत, ३ गुणव्रत एवं ४ शिक्षाव्रत",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="chapters-grid space-y-6">
         <div class="chapter-card p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-white/10">
             <h2 class="text-xl font-notoserif font-bold text-amber-200 mb-3">१. पाँच अणुव्रत :</h2>
@@ -287,16 +198,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "anekantavada": {
-    "id": "anekantavada",
-    "category": "philosophy",
-    "title": "अनेकांतवाद एवं स्याद्वाद",
-    "subtitle": "जैन दर्शन की सर्वोत्कृष्ट विश्व-शांति एवं समन्वय दृष्टि",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},anekantavada:{id:"anekantavada",category:"philosophy",title:"अनेकांतवाद एवं स्याद्वाद",subtitle:"जैन दर्शन की सर्वोत्कृष्ट विश्व-शांति एवं समन्वय दृष्टि",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "अनन्तधर्मात्मकमेव तत्त्वम्।"
     </div>
@@ -319,16 +221,7 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "gunasthan": {
-    "id": "gunasthan",
-    "category": "philosophy",
-    "title": "चौदह गुणस्थान विवेचन",
-    "subtitle": "मिथ्यात्व से सिद्धपद तक आत्मा के क्रमिक आध्यात्मिक विकास के १४ सोपान",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},gunasthan:{id:"gunasthan",category:"philosophy",title:"चौदह गुणस्थान विवेचन",subtitle:"मिथ्यात्व से सिद्धपद तक आत्मा के क्रमिक आध्यात्मिक विकास के १४ सोपान",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="chapters-grid space-y-6">
         <div class="chapter-card p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-white/10">
             <h2 class="text-xl font-notoserif font-bold text-amber-200 mb-3">१४ गुणस्थानों के नाम व स्वरूप :</h2>
@@ -350,16 +243,7 @@ export const PhilosophyData = {
             </ol>
         </div>
     </div>
-</div>`
-  },
-
-  "leshya": {
-    "id": "leshya",
-    "category": "philosophy",
-    "title": "षड् लेश्या स्वरूप",
-    "subtitle": "कषायों के तारतम्य से उत्पन्न आत्मा के भावों का रंग",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},leshya:{id:"leshya",category:"philosophy",title:"षड् लेश्या स्वरूप",subtitle:"कषायों के तारतम्य से उत्पन्न आत्मा के भावों का रंग",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="chapters-grid space-y-6">
         <div class="chapter-card p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-white/10">
             <h2 class="text-xl font-notoserif font-bold text-amber-200 mb-3">६ लेश्याओं का स्वरूप :</h2>
@@ -373,6 +257,4 @@ export const PhilosophyData = {
             </ul>
         </div>
     </div>
-</div>`
-  }
-};
+</div>`}};export{t as PhilosophyData};

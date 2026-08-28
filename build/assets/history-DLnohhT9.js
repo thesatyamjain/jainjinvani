@@ -1,12 +1,4 @@
-// Auto-generated comprehensive Jain History (Itihas) Data
-export const HistoryData = {
-  "adinath": {
-    "id": "adinath",
-    "category": "itihas",
-    "title": "भगवान आदिनाथ (ऋषभदेव) का इतिहास",
-    "subtitle": "युगादि पुरुष, संस्कृति के जनक एवं प्रथम तीर्थंकर",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+const t={adinath:{id:"adinath",category:"itihas",title:"भगवान आदिनाथ (ऋषभदेव) का इतिहास",subtitle:"युगादि पुरुष, संस्कृति के जनक एवं प्रथम तीर्थंकर",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "युगादिपुरुषाय नमः श्रीऋषभदेवाय जिनेन्द्राय।"
     </div>
@@ -35,16 +27,7 @@ export const HistoryData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">इंद्र द्वारा आयोजित राजसभा में अप्सरा नीलांजना का क्षणभंगुर नृत्य देखकर प्रभु को परम वैराग्य हुआ। आपने राज्य का विभाजन कर दिगम्बर दीक्षा धारण की। १ हजार वर्ष के घोर मौन तप के पश्चात् केवलज्ञान प्राप्त किया और अंत में कैलाश पर्वत (अष्टापद) से माघ कृष्ण चतुर्दशी को मोक्ष पद प्राप्त किया।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "mahavir-swami": {
-    "id": "mahavir-swami",
-    "category": "itihas",
-    "title": "भगवान महावीर स्वामी का इतिहास",
-    "subtitle": "२४वें तीर्थंकर, अहिंसा के अमर संदेशवाहक एवं शासन नायक",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"mahavir-swami":{id:"mahavir-swami",category:"itihas",title:"भगवान महावीर स्वामी का इतिहास",subtitle:"२४वें तीर्थंकर, अहिंसा के अमर संदेशवाहक एवं शासन नायक",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "अहिंसा परमो धर्मः। जीयो और जीने दो।"
     </div>
@@ -73,16 +56,7 @@ export const HistoryData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">जृम्भिक ग्राम में ऋजुकूला नदी के तट पर शाल वृक्ष के नीचे केवलज्ञान प्राप्त हुआ। विपुलाचल पर्वत पर प्रथम दिव्यध्वनि खिरी और गौतम स्वामी प्रथम गणधर बने। कार्तिक कृष्ण अमावस्या को पावापुरी के जलमंदिर से ७२ वर्ष की आयु में निर्वाण प्राप्त हुआ, जिसे दीपावली महापर्व के रूप में मनाया जाता है।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "mahavir-jayanti": {
-    "id": "mahavir-jayanti",
-    "category": "itihas",
-    "title": "महावीर जयंती एवं शासन प्रभावना",
-    "subtitle": "चैत्र शुक्ल त्रयोदशी - २४वें तीर्थंकर जन्म कल्याणक महोत्सव",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"mahavir-jayanti":{id:"mahavir-jayanti",category:"itihas",title:"महावीर जयंती एवं शासन प्रभावना",subtitle:"चैत्र शुक्ल त्रयोदशी - २४वें तीर्थंकर जन्म कल्याणक महोत्सव",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         <strong>महावीर जयंती</strong> जैन समाज का सर्वोच्च पावन पर्व है, जो प्रतिवर्ष चैत्र शुक्ल त्रयोदशी को मनाया जाता है। इस दिन २४वें तीर्थंकर भगवान महावीर स्वामी का जन्म कुण्डलपुर के राजमहल में हुआ था।
     </p>
@@ -93,16 +67,7 @@ export const HistoryData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">इस दिन प्रातःकाल भव्य प्रभात फेरी, जिनालयों में १०८ कलशों से शांतिधारा व महामस्तकाभिषेक, पालकी यात्रा एवं भगवान महावीर के विश्व-शांति संदेश 'अहिंसा, संयम और अपरिग्रह' का जन-जन में प्रचार किया जाता है।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "acharya-kundakunda": {
-    "id": "acharya-kundakunda",
-    "category": "itihas",
-    "title": "अध्यात्म चक्रवर्ती आचार्य कुन्दकुन्द देव",
-    "subtitle": "दिगम्बर जैन अध्यात्म परंपरा के सर्वोपरि महर्षि",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"acharya-kundakunda":{id:"acharya-kundakunda",category:"itihas",title:"अध्यात्म चक्रवर्ती आचार्य कुन्दकुन्द देव",subtitle:"दिगम्बर जैन अध्यात्म परंपरा के सर्वोपरि महर्षि",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "मंगलं भगवान वीरो, मंगलं गौतमो गणी।<br>
         मंगलं कुन्दकुन्दार्यो, जैनधर्मोऽस्तु मंगलम्॥"
@@ -129,16 +94,7 @@ export const HistoryData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">परंपरानुसार आचार्य कुन्दकुन्द देव को रिद्धि प्राप्त थी और आपने विदेह क्षेत्र जाकर साक्षात् <strong>सीमंधर स्वामी</strong> के समवसरण में बैठकर आठ दिन तक दिव्यध्वनि का श्रवण किया था।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "acharya-samantabhadra": {
-    "id": "acharya-samantabhadra",
-    "category": "itihas",
-    "title": "स्वामी समन्तभद्र आचार्य",
-    "subtitle": "तार्किक शिरोमणि, वादीभसिंह एवं श्रावक धर्म के अमर प्रणेता",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"acharya-samantabhadra":{id:"acharya-samantabhadra",category:"itihas",title:"स्वामी समन्तभद्र आचार्य",subtitle:"तार्किक शिरोमणि, वादीभसिंह एवं श्रावक धर्म के अमर प्रणेता",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         <strong>आचार्य समन्तभद्र</strong> (द्वितीय शताब्दी) जैन दर्शन के अद्वितीय तार्किक, कवि एवं प्रभावक आचार्य थे। उन्होंने बनारस, पाटलिपुत्र, कांची आदि नगरों में जैन न्याय एवं स्याद्वाद की विजय ध्वजा फहराई।
     </p>
@@ -154,45 +110,16 @@ export const HistoryData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "acharya-jinasena": {
-    "id": "acharya-jinasena",
-    "category": "itihas",
-    "title": "आचार्य जिनसेन स्वामी",
-    "subtitle": "महापुराण एवं आदिपुराण के अमर रचयिता",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"acharya-jinasena":{id:"acharya-jinasena",category:"itihas",title:"आचार्य जिनसेन स्वामी",subtitle:"महापुराण एवं आदिपुराण के अमर रचयिता",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         <strong>आचार्य जिनसेन स्वामी</strong> (८वीं-९वीं शताब्दी) राष्ट्रकूट सम्राट अमोघवर्ष के गुरु और जैन साहित्य के महाकवि थे। उन्होंने ६३ शलाका पुरुषों के जीवन चरित्र पर आधारित <strong>'महापुराण' (आदिपुराण)</strong>, <strong>'हरिवंश पुराण'</strong> एवं मेघदूत के पदों से युक्त <strong>'पार्श्वाभ्युदय काव्य'</strong> की रचना की।
     </p>
-</div>`
-  },
-
-  "acharya-todarmal": {
-    "id": "acharya-todarmal",
-    "category": "itihas",
-    "title": "प्रातःस्मरणीय पंडित टोडरमल जी",
-    "subtitle": "मोक्षमार्ग प्रकाशक के रचयिता, जयपुर के अद्वितीय विद्वान",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"acharya-todarmal":{id:"acharya-todarmal",category:"itihas",title:"प्रातःस्मरणीय पंडित टोडरमल जी",subtitle:"मोक्षमार्ग प्रकाशक के रचयिता, जयपुर के अद्वितीय विद्वान",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         <strong>पंडित टोडरमल जी</strong> (१८वीं शताब्दी, जयपुर) जैन वांग्मय के अत्यंत प्रखर तार्किक, गणितज्ञ एवं दार्शनिक मनीषी थे। उन्होंने भाषा गद्य में <strong>'मोक्षमार्ग प्रकाशक'</strong> जैसे अद्वितीय ग्रंथ की रचना की और गोम्मटसार, लब्धिसार, क्षपणासार पर 'सम्यग्ज्ञान चन्द्रिका' टीका लिखकर आगम को जन-जन तक पहुँचाया।
     </p>
-</div>`
-  },
-
-  "acharya-virsena": {
-    "id": "acharya-virsena",
-    "category": "itihas",
-    "title": "सिद्धांताचार्य वीरसेन स्वामी",
-    "subtitle": "षट्खण्डागम पर ७२,००० श्लोक प्रमाण 'धवला' टीका के रचयिता",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"acharya-virsena":{id:"acharya-virsena",category:"itihas",title:"सिद्धांताचार्य वीरसेन स्वामी",subtitle:"षट्खण्डागम पर ७२,००० श्लोक प्रमाण 'धवला' टीका के रचयिता",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <p class="intro text-base sm:text-lg text-slate-300 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
         <strong>आचार्य वीरसेन स्वामी</strong> (८वीं शताब्दी) सिद्धांत चक्रवर्ती थे। उन्होंने आचार्य पुष्पदंत एवं भूतबलि विरचित मूल आगम षट्खण्डागम पर ७२,००० श्लोक प्रमाण <strong>'धवला टीका'</strong> तथा कषायपाहुड़ पर <strong>'जयधवला टीका'</strong> लिखकर जैन सिद्धांत एवं गणित की रक्षा की।
     </p>
-</div>`
-  }
-};
+</div>`}};export{t as HistoryData};

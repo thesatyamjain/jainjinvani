@@ -1,12 +1,4 @@
-// Auto-generated comprehensive Jain Cosmology (Bhugol) Data
-export const CosmologyData = {
-  "cosmology": {
-    "id": "cosmology",
-    "category": "bhugol",
-    "title": "जैन त्रिलोक रचना एवं भूगोल",
-    "subtitle": "अनादिनिधन चौदह राजू प्रमाण तीन लोक का संपूर्ण स्वरूप",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+const t={cosmology:{id:"cosmology",category:"bhugol",title:"जैन त्रिलोक रचना एवं भूगोल",subtitle:"अनादिनिधन चौदह राजू प्रमाण तीन लोक का संपूर्ण स्वरूप",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "लोगागासे दिट्ठो चउदस-रज्जु-पमाण संठाणो।<br>
         तिहुयण-निलओ णिच्चो जिणेहिं विहिओ अकिट्टिमो॥"
@@ -45,16 +37,7 @@ export const CosmologyData = {
             <p class="text-slate-300/90 text-sm sm:text-base">इनमें कुल ८४ लाख नारकी बिल हैं जहाँ पाप कर्मों के तीव्र उदय से नारकी जीव निरंतर शारीरिक व मानसिक असह्य वेदनाएँ भोगते हैं।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "jambudvipa": {
-    "id": "jambudvipa",
-    "category": "bhugol",
-    "title": "जम्बूद्वीप संरचना",
-    "subtitle": "मध्यलोक का केंद्रवर्ती १ लाख योजन विस्तृत चक्राकार द्वीप",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},jambudvipa:{id:"jambudvipa",category:"bhugol",title:"जम्बूद्वीप संरचना",subtitle:"मध्यलोक का केंद्रवर्ती १ लाख योजन विस्तृत चक्राकार द्वीप",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "तन्मध्ये मेरुनाभिरर्जुनवृक्षो जम्बूद्वीपः।"
     </div>
@@ -83,16 +66,7 @@ export const CosmologyData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">सुमेरु पर्वत के उत्तर-दक्षिण में स्थित विदेह क्षेत्र शाश्वत कर्मभूमि है। यहाँ सदैव तीर्थंकर विद्यमान रहते हैं और वर्तमान में <strong>श्री सीमंधर स्वामी</strong> साक्षात् दिव्यध्वनि द्वारा धर्मोपदेश दे रहे हैं।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "urdhva-loka": {
-    "id": "urdhva-loka",
-    "category": "bhugol",
-    "title": "ऊर्ध्व लोक (देवलोक)",
-    "subtitle": "१६ स्वर्ग, नव ग्रैवेयक, नव अनुदिश, ५ अनुत्तर विमान एवं सिद्धशिला",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"urdhva-loka":{id:"urdhva-loka",category:"bhugol",title:"ऊर्ध्व लोक (देवलोक)",subtitle:"१६ स्वर्ग, नव ग्रैवेयक, नव अनुदिश, ५ अनुत्तर विमान एवं सिद्धशिला",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "सौधर्मादि-विमानानि लोकाग्रे सिद्धसंस्थितिः।"
     </div>
@@ -113,16 +87,7 @@ export const CosmologyData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">१६ स्वर्गों से ऊपर <strong>९ ग्रैवेयक, ९ अनुदिश एवं ५ अनुत्तर विमान</strong> (विजय, वैजयंत, जयंत, अपराजित, सर्वार्थसिद्धि) हैं। यहाँ सभी देव समान पद वाले 'अहमिन्द्र' होते हैं। सर्वार्थसिद्धि के देव एक भव धारण कर नियम से मोक्ष प्राप्त करते हैं।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "madhya-loka": {
-    "id": "madhya-loka",
-    "category": "bhugol",
-    "title": "मध्य लोक (मनुष्य व तिर्यंच लोक)",
-    "subtitle": "असंख्यात द्वीप-समुद्र, ढाई द्वीप एवं कर्मभूमि व्यवस्था",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"madhya-loka":{id:"madhya-loka",category:"bhugol",title:"मध्य लोक (मनुष्य व तिर्यंच लोक)",subtitle:"असंख्यात द्वीप-समुद्र, ढाई द्वीप एवं कर्मभूमि व्यवस्था",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "मानुषोत्तर-परिवेष्टिताः सार्ध-द्वि-द्वीपाः कर्मभूमयः।"
     </div>
@@ -142,16 +107,7 @@ export const CosmologyData = {
             <p class="text-slate-300 text-sm sm:text-base leading-relaxed">आठवाँ नंदीश्वर द्वीप १६३ करोड़ ८४ लाख योजन विस्तृत है। यहाँ चारों दिशाओं में ५२ अकृत्रिम जिन चैत्यालय हैं जहाँ अष्टान्हिका महापर्व में चारों निकायों के देव आकर अखंड पूजन वंदना करते हैं।</p>
         </div>
     </div>
-</div>`
-  },
-
-  "adho-loka": {
-    "id": "adho-loka",
-    "category": "bhugol",
-    "title": "अधो लोक (नरक लोक)",
-    "subtitle": "सातों नरक भूमियाँ, ८४ लाख बिल एवं नारकियों की दारुण वेदना",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},"adho-loka":{id:"adho-loka",category:"bhugol",title:"अधो लोक (नरक लोक)",subtitle:"सातों नरक भूमियाँ, ८४ लाख बिल एवं नारकियों की दारुण वेदना",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "रत्नशर्करावालुकापंकधूमतमोमहातमःप्रभा भूमयः।"
     </div>
@@ -174,16 +130,7 @@ export const CosmologyData = {
             </ul>
         </div>
     </div>
-</div>`
-  },
-
-  "siddhashila": {
-    "id": "siddhashila",
-    "category": "bhugol",
-    "title": "सिद्धशिला स्वरूप",
-    "subtitle": "लोकाग्र स्थित ४५ लाख योजन विस्तृत मोक्ष धाम",
-    "type": "html",
-    "content": `<div class="book-content font-gotu text-slate-200">
+</div>`},siddhashila:{id:"siddhashila",category:"bhugol",title:"सिद्धशिला स्वरूप",subtitle:"लोकाग्र स्थित ४५ लाख योजन विस्तृत मोक्ष धाम",type:"html",content:`<div class="book-content font-gotu text-slate-200">
     <div class="sutra-quote text-center my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-amber-200 font-notoserif font-bold text-lg md:text-xl shadow-[0_0_25px_rgba(245,158,11,0.15)]">
         "लोकाग्रे संप्रस्थिताः शुद्धात्म-मूर्तयः।"
     </div>
@@ -203,6 +150,4 @@ export const CosmologyData = {
             </ul>
         </div>
     </div>
-</div>`
-  }
-};
+</div>`}};export{t as CosmologyData};
