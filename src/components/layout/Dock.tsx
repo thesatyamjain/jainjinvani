@@ -347,6 +347,7 @@ export const Dock = ({
                           }}
                           className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-xs font-mono font-bold text-slate-300 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl active:scale-95 transition-all"
                           title="अक्षर छोटा करें (A-)"
+                          aria-label="अक्षर छोटा करें (Decrease font size)"
                         >
                           A-
                         </button>
@@ -357,6 +358,7 @@ export const Dock = ({
                           }}
                           className="px-1.5 py-0.5 rounded text-[11px] sm:text-xs text-amber-300 hover:bg-amber-400/20 font-mono font-semibold select-none cursor-pointer transition-colors"
                           title="क्लिक करके बंद करें (Aa)"
+                          aria-label="वर्तमान अक्षर आकार। क्लिक करके बंद करें। (Current font size. Click to close controls.)"
                         >
                           {readerState.fontSize}
                         </button>
@@ -367,6 +369,7 @@ export const Dock = ({
                           }}
                           className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-xs font-mono font-bold text-slate-300 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl active:scale-95 transition-all"
                           title="अक्षर बड़ा करें (A+)"
+                          aria-label="अक्षर बड़ा करें (Increase font size)"
                         >
                           A+
                         </button>
@@ -377,6 +380,7 @@ export const Dock = ({
                           }}
                           className="w-6 h-7 sm:w-7 sm:h-8 flex items-center justify-center text-amber-400/80 hover:text-amber-200 hover:bg-amber-500/20 rounded-lg text-xs ml-0.5 border-l border-white/10 pl-1 transition-all"
                           title="संपन्न (Aa पर वापस लौटें)"
+                          aria-label="संपन्न, अक्षर नियंत्रण बंद करें (Done, close font controls)"
                         >
                           ✓
                         </button>
@@ -499,6 +503,7 @@ export const Dock = ({
                   : 'bg-white/30 hover:bg-white/60 scale-100'
               }`}
               title="स्वाध्याय टूल्स (Reader)"
+              aria-label="स्वाध्याय टूल्स पर जाएं (Switch to Reader Tools)"
             />
             <button
               onClick={(e) => {
@@ -511,6 +516,7 @@ export const Dock = ({
                   : 'bg-white/30 hover:bg-white/60 scale-100'
               }`}
               title="होम नेविगेशन (Home)"
+              aria-label="होम नेविगेशन पर जाएं (Switch to Home Navigation)"
             />
           </div>
         )}

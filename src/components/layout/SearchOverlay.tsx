@@ -144,6 +144,7 @@ export const SearchOverlay = ({
                 onClick={onClose}
                 className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/10 rounded-xl transition-colors text-slate-400 hover:text-white cursor-pointer"
                 title="बंद करें (Esc)"
+                aria-label="खोज बंद करें (Close search)"
               >
                 <X className="w-5 h-5" />
               </button>
