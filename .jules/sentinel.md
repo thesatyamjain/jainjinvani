@@ -1,0 +1,4 @@
+## 2025-01-22 - Prevent Vite Env Var Secret Leakage
+**Vulnerability:** Admin password was stored as a plaintext environment variable starting with `VITE_` (`VITE_ADMIN_PASSWORD`). Vite statically replaces `import.meta.env.VITE_*` occurrences with their string values during the build step, resulting in the plaintext password being embedded and exposed in the client-side JavaScript bundle.
+**Learning:** Any environment variable prefixed with `VITE_` is considered public and will be exposed in the built bundle. They should never be used for sensitive secrets like passwords, keys, or tokens.
+**Prevention:** Rather than using the plaintext value in the `.env` file and hashing it on the client, the environment variable itself should store the cryptographic hash (e.g., `VITE_ADMIN_PASSWORD_HASH`). The client then computes the hash of the user's input and compares it against this hashed environment variable, preventing the exposure of the raw password.
