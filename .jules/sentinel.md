@@ -1,0 +1,4 @@
+## 2025-03-09 - Plaintext Secret Leakage via Vite Build Process
+**Vulnerability:** The application was configured to read an admin password from `import.meta.env.VITE_ADMIN_PASSWORD` in the plaintext environment variable.
+**Learning:** Vite bundles any environment variable prefixed with `VITE_` directly into the client-side bundle as static strings during the build process (`npm run build`). This exposes plaintext passwords or secrets directly in the source code sent to every user's browser, making the secret easily readable by inspecting the frontend bundles.
+**Prevention:** Never use `VITE_` prefixed environment variables for plaintext secrets, passwords, or keys. Always use cryptographically secure hashes (e.g., SHA-256) for authentication on the client side, storing only the hash in `VITE_ADMIN_PASSWORD_HASH` and comparing the hashed input to it.
