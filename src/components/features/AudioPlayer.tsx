@@ -137,7 +137,7 @@ export const AudioPlayer = ({ track, onClose, autoPlay = true }: AudioPlayerProp
           <div className="flex items-center gap-2">
             {!isMinimized && (
               <>
-                <button className="p-2 text-blue-200 hover:text-white transition-colors">
+                <button aria-label="Skip Backward" className="p-2 text-blue-200 hover:text-white transition-colors">
                   <SkipBack className="w-5 h-5" />
                 </button>
               </>
@@ -145,6 +145,7 @@ export const AudioPlayer = ({ track, onClose, autoPlay = true }: AudioPlayerProp
 
             <button
               onClick={togglePlay}
+              aria-label={isPlaying ? "Pause" : "Play"}
               className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 transition-transform"
             >
               {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
@@ -152,7 +153,7 @@ export const AudioPlayer = ({ track, onClose, autoPlay = true }: AudioPlayerProp
 
             {!isMinimized && (
               <>
-                <button className="p-2 text-blue-200 hover:text-white transition-colors">
+                <button aria-label="Skip Forward" className="p-2 text-blue-200 hover:text-white transition-colors">
                   <SkipForward className="w-5 h-5" />
                 </button>
               </>
@@ -161,10 +162,10 @@ export const AudioPlayer = ({ track, onClose, autoPlay = true }: AudioPlayerProp
 
           {/* Window Controls */}
           <div className="flex flex-col gap-1 ml-2">
-            <button onClick={onClose} className="text-white/30 hover:text-white transition-colors">
+            <button aria-label="Close Audio Player" onClick={onClose} className="text-white/30 hover:text-white transition-colors">
               <X className="w-4 h-4" />
             </button>
-            <button onClick={() => setIsMinimized(!isMinimized)} className="text-white/30 hover:text-white transition-colors">
+            <button aria-label={isMinimized ? "Maximize Audio Player" : "Minimize Audio Player"} onClick={() => setIsMinimized(!isMinimized)} className="text-white/30 hover:text-white transition-colors">
               {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
             </button>
           </div>
