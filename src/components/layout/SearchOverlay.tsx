@@ -5,6 +5,7 @@ import { contentInventory, ContentItem } from '../../data/inventory';
 import { matchSearchQuery } from '../../utils/searchHelper';
 import { getRecentReads } from '../../lib/storage';
 import { TiltCard } from './TiltCard';
+import { useDebounce } from '../../hooks/useDebounce';
 
 // Helper to flatten the inventory
 const getAllItems = () => {
@@ -58,6 +59,7 @@ export const SearchOverlay = ({
   currentActivePage,
 }: SearchOverlayProps) => {
   const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce(query, 300);
   const allItems = useMemo(() => getAllItems(), []);
 
   // Close on Escape key
@@ -76,9 +78,9 @@ export const SearchOverlay = ({
   }, [isOpen]);
 
   const filteredItems = useMemo(() => {
-    if (!query.trim()) return [];
-    return allItems.filter((item) => matchSearchQuery(item, query));
-  }, [query, allItems]);
+    if (!debouncedQuery.trim()) return [];
+    return allItems.filter((item) => matchSearchQuery(item, debouncedQuery));
+  }, [debouncedQuery, allItems]);
 
   // Featured / Curated Items when search is empty
   const featuredItems = useMemo(() => {
