@@ -1,0 +1,4 @@
+## 2026-09-14 - Fix Exposed Secret in Vite Bundle
+**Vulnerability:** The application was configured to read an admin password from `import.meta.env.VITE_ADMIN_PASSWORD`. Vite statically replaces `VITE_` prefixed environment variables into the client bundle at build time, meaning the plaintext password could be exposed to anyone who inspects the frontend source code.
+**Learning:** In Vite apps, anything prefixed with `VITE_` is considered public and will be baked directly into the frontend JS bundle. Passwords and API secrets must never be passed this way.
+**Prevention:** Instead of passing the plaintext password, only pass cryptographic hashes (like SHA-256) via `VITE_` environment variables if frontend verification is strictly necessary (such as `VITE_ADMIN_PASSWORD_HASH`). Then, hash user input on the client-side and compare the hashes.
