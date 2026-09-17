@@ -1,0 +1,4 @@
+## 2024-05-18 - [Hardcoded Client-Side 2FA Secret]
+**Vulnerability:** A hardcoded `MASTER_2FA_SECRET` was exposed in the client-side code (`src/pages/AdminLogin.tsx`).
+**Learning:** In a zero-server (client-side only) architecture, hardcoding a single master 2FA secret allows anyone who views the source code to generate valid TOTP codes. While the 2FA secret must reside in the browser for client-side TOTP verification, it should be uniquely generated and stored (e.g., in `localStorage`) rather than embedded in the source code. It's also critical to provide a fallback to the legacy hardcoded key for existing users to prevent backward-compatibility lockouts.
+**Prevention:** Never hardcode cryptographic secrets or 2FA keys in client bundles. Use Web Crypto API (`crypto.getRandomValues`) to generate unique keys on the client and store them securely in the browser's storage, ensuring appropriate backward-compatibility fallbacks.
