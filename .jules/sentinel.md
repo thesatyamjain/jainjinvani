@@ -1,0 +1,4 @@
+## 2025-02-09 - Hardcoded 2FA Secret Key Vulnerability
+**Vulnerability:** Found a hardcoded 2FA secret (`MASTER_2FA_SECRET = 'JINVANISACRED26A'`) directly embedded in the source code, effectively nullifying the security benefit of 2FA by exposing the TOTP seed in the client-side bundle.
+**Learning:** Hardcoded secrets in client-side code are a critical vulnerability. But fixing them in an established app requires backward compatibility (using the local storage state to detect if a legacy setup is already in use) to prevent breaking active sessions or locking users out.
+**Prevention:** Always use dynamically generated secrets or securely provided environment variables (`import.meta.env`) for cryptography or 2FA, persisting them locally only if serverless architecture prevents database storage.
