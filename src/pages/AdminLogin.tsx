@@ -309,11 +309,35 @@ export async function verifyTOTP(secretBase32: string, userCode: string): Promis
   return false;
 }
 
-// Master 2FA Secret Key (Standard Base32 for Google Authenticator)
-export const MASTER_2FA_SECRET = 'JINVANISACRED26A';
+// 2FA Configuration
 export const TOTP_ISSUER = 'Jain Jinvani';
 export const TOTP_ACCOUNT = 'admin';
-export const TOTP_AUTH_URI = `otpauth://totp/${encodeURIComponent(TOTP_ISSUER)}:${encodeURIComponent(TOTP_ACCOUNT)}?secret=${MASTER_2FA_SECRET}&issuer=${encodeURIComponent(TOTP_ISSUER)}`;
+
+// Dynamic 2FA Secret Management
+export const getMaster2FASecret = (): string => {
+  // If 2FA is already enabled using the legacy hardcoded secret, keep using it for backward compatibility
+  const legacySecret = 'JINVANISACRED26A';
+  if (localStorage.getItem('jinvani_admin_2fa_enabled') === 'true' && !localStorage.getItem('jinvani_admin_2fa_secret')) {
+    return legacySecret;
+  }
+
+  // Otherwise, use a dynamically generated secret stored in localStorage
+  let secret = localStorage.getItem('jinvani_admin_2fa_secret');
+  if (!secret) {
+    // Generate a random 16-character Base32 secret
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    secret = Array.from(crypto.getRandomValues(new Uint8Array(16)))
+      .map((x) => chars[x % chars.length])
+      .join('');
+    localStorage.setItem('jinvani_admin_2fa_secret', secret);
+  }
+  return secret;
+};
+
+export const getTOTPAuthURI = (): string => {
+  const secret = getMaster2FASecret();
+  return `otpauth://totp/${encodeURIComponent(TOTP_ISSUER)}:${encodeURIComponent(TOTP_ACCOUNT)}?secret=${secret}&issuer=${encodeURIComponent(TOTP_ISSUER)}`;
+};
 
 // Cryptographically Hashed Emergency Recovery Codes (SHA-256)
 // Raw recovery codes are strictly offline secrets and never committed in plaintext.
@@ -1322,7 +1346,7 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
         }
       } else {
         // Verify standard RFC 6238 TOTP
-        const isValidOtp = await verifyTOTP(MASTER_2FA_SECRET, cleanInput);
+        const isValidOtp = await verifyTOTP(getMaster2FASecret(), cleanInput);
         if (isValidOtp) {
           handleDirectLogin('2FA सत्यापन सफल! डैशबोर्ड में स्वागत है।');
         } else {
@@ -1347,7 +1371,7 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
   // Test OTP in 2FA Setup Modal
   const handleTestOtp = async () => {
     if (!testOtpInput.trim()) return;
-    const isValid = await verifyTOTP(MASTER_2FA_SECRET, testOtpInput.trim());
+    const isValid = await verifyTOTP(getMaster2FASecret(), testOtpInput.trim());
     setTestOtpResult(isValid);
   };
 
@@ -2415,7 +2439,7 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
                   <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-slate-950/80 border border-amber-500/20">
                     <div className="w-36 h-36 bg-white p-2 rounded-xl flex items-center justify-center shadow-lg shrink-0">
                       <img
-                        src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(TOTP_AUTH_URI)}`}
+                        src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(getTOTPAuthURI())}`}
                         alt="2FA QR Code"
                         className="w-full h-full object-contain"
                       />
@@ -2425,12 +2449,12 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
                         <span className="text-amber-300 font-semibold block mb-1">मैनुअल सेटअप की (Setup Key):</span>
                         <div className="flex items-center gap-1.5 bg-slate-900 border border-amber-500/25 px-2.5 py-1.5 rounded-lg">
                           <code className="text-amber-200 font-mono font-bold tracking-widest text-xs flex-1 select-all">
-                            {MASTER_2FA_SECRET}
+                            {getMaster2FASecret()}
                           </code>
                           <button
                             type="button"
                             onClick={() => {
-                              navigator.clipboard.writeText(MASTER_2FA_SECRET);
+                              navigator.clipboard.writeText(getMaster2FASecret());
                               showToast('2FA सीक्रेट की कॉपी हो गई!');
                             }}
                             className="p-1 text-slate-400 hover:text-amber-300 transition-colors"
@@ -4795,12 +4819,12 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
                 <div>
                   <span className="text-[10px] text-slate-400 font-gotu block">मास्टर 2FA सीक्रेट:</span>
                   <code className="text-xs sm:text-sm font-mono font-bold text-amber-200 tracking-wider">
-                    {MASTER_2FA_SECRET}
+                    {getMaster2FASecret()}
                   </code>
                 </div>
                 <button
                   type="button"
-                  onClick={() => copyGuideText(MASTER_2FA_SECRET, 'guide_2fa_secret', '2FA सीक्रेट कुंजी कॉपी हो गई!')}
+                  onClick={() => copyGuideText(getMaster2FASecret(), 'guide_2fa_secret', '2FA सीक्रेट कुंजी कॉपी हो गई!')}
                   className="p-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 transition-colors cursor-pointer"
                 >
                   {copiedKey === 'guide_2fa_secret' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
