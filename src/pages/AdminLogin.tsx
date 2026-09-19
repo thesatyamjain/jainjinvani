@@ -1902,7 +1902,7 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
                         onClick={() => setShowLoginPass(!showLoginPass)}
                         className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-amber-300 transition-colors p-1 cursor-pointer"
                         tabIndex={-1}
-                        title={showLoginPass ? 'पासवर्ड छुपाएं' : 'पासवर्ड देखें'}
+                        title={showLoginPass ? 'पासवर्ड छुपाएं' : 'पासवर्ड देखें'} aria-label={showLoginPass ? 'पासवर्ड छुपाएं' : 'पासवर्ड देखें'}
                       >
                         {showLoginPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>

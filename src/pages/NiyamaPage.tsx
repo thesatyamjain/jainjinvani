@@ -123,7 +123,7 @@ export const NiyamaPage = ({ onBack, onNavigate }: NiyamaPageProps) => {
           whileTap={{ scale: 0.95 }}
           onClick={onBack}
           className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-amber-500/20 hover:border-amber-500/40 transition-colors backdrop-blur-xl shrink-0 group cursor-pointer shadow-md"
-          title="वापस जाएं"
+          title="वापस जाएं" aria-label="वापस जाएं"
         >
           <ChevronLeft className="w-5 h-5 text-slate-300 group-hover:text-amber-200" />
         </motion.button>
