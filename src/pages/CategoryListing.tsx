@@ -270,7 +270,7 @@ const CategoryDivider = ({
             transition={{ type: 'spring', stiffness: 500, damping: 25 }}
             onClick={onSelectSubcategory}
             className="hidden sm:inline-flex items-center gap-1 text-[11px] font-gotu text-slate-400 hover:text-amber-200 transition-colors px-2 py-0.5 rounded-lg hover:bg-white/5 cursor-pointer"
-            title="केवल यह अनुभाग देखें"
+            title="केवल यह अनुभाग देखें" aria-label="केवल यह अनुभाग देखें"
           >
             <span>विस्तार</span>
             <ChevronRight className="w-3 h-3" />
@@ -503,7 +503,7 @@ export const CategoryListing = ({
             transition={{ type: 'spring', stiffness: 500, damping: 25 }}
             onClick={onBack}
             className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-amber-500/20 hover:border-amber-500/40 transition-colors backdrop-blur-xl shrink-0 group cursor-pointer shadow-md"
-            title="वापस जाएं"
+            title="वापस जाएं" aria-label="वापस जाएं"
           >
             <ChevronLeft className="w-6 h-6 text-slate-300 group-hover:text-amber-200" />
           </motion.button>
@@ -534,7 +534,7 @@ export const CategoryListing = ({
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 25 }}
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer" aria-label="खोज साफ़ करें"
               >
                 <X className="w-3.5 h-3.5" />
               </motion.button>
@@ -553,7 +553,7 @@ export const CategoryListing = ({
                     ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
                     : 'text-slate-400 hover:text-white'
                 }`}
-                title="ग्रिड दृश्य (Grid View)"
+                title="ग्रिड दृश्य (Grid View)" aria-label="ग्रिड दृश्य (Grid View)"
               >
                 <LayoutGrid className="w-4 h-4" />
               </motion.button>

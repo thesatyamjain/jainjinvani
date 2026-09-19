@@ -83,7 +83,7 @@ export const MuniPage = ({ onBack, onNavigate }: MuniPageProps) => {
           whileTap={{ scale: 0.95 }}
           onClick={onBack}
           className="absolute left-0 top-1 w-12 h-12 rounded-2xl bg-white/5 hover:bg-amber-500/20 border border-white/10 hover:border-amber-500/40 transition-colors flex items-center justify-center group z-10 cursor-pointer shadow-md"
-          title="वापस जाएं"
+          title="वापस जाएं" aria-label="वापस जाएं"
         >
           <ChevronLeft className="w-6 h-6 text-slate-300 group-hover:text-amber-200" />
         </motion.button>

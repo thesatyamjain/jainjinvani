@@ -1,0 +1,3 @@
+## 2026-09-19 - Added ARIA labels to multiple icon-only buttons
+**Learning:** Found multiple places in the app where icon-only buttons lacked `aria-label`, specifically in header components, search fields, and password toggles. The `title` attribute was frequently used instead, which isn't always reliably read by screen readers without an explicit `aria-label`.
+**Action:** When adding or reviewing new icon-only buttons, ensure an explicit `aria-label` is always provided alongside or instead of just a `title` attribute, particularly for navigation (`onBack`) and interactive controls (toggling password visibility, clearing search input).
