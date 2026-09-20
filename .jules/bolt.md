@@ -1,0 +1,3 @@
+## 2024-05-20 - Debouncing Search Overlay to reduce rendering block
+**Learning:** The `SearchOverlay` component filters and ranks a large `allItems` list locally using `searchAndRankItems` on every keystroke. Because this application computes ranking and highlights synchronously, frequent typing events can block the main thread and drop frames. A dedicated `useDebounce` hook exists but wasn't fully utilized for the query in the overlay.
+**Action:** Debounced the search `query` value before passing it into the expensive `useMemo` that filters and calls `searchAndRankItems()`. The native UI still updates quickly (text input feels instant), but the heavy list rendering logic only kicks in after a brief typing pause, significantly improving perceived and actual performance.
