@@ -4733,9 +4733,9 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
             {/* 3 Recovery Codes Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { code: 'JIN-8492-SAFE', key: 'rec1', desc: 'प्राथमिक बैकअप कोड' },
-                { code: 'JIN-3174-OMMM', key: 'rec2', desc: 'द्वितीयक बैकअप कोड' },
-                { code: 'JIN-9518-MOKS', key: 'rec3', desc: 'तृतीयक बैकअप कोड' },
+                { code: 'JIN-****-****', key: 'rec1', desc: 'प्राथमिक बैकअप कोड' },
+                { code: 'JIN-****-****', key: 'rec2', desc: 'द्वितीयक बैकअप कोड' },
+                { code: 'JIN-****-****', key: 'rec3', desc: 'तृतीयक बैकअप कोड' },
               ].map((item) => (
                 <div
                   key={item.key}
