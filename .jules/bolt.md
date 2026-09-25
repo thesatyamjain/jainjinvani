@@ -1,0 +1,3 @@
+## 2024-05-24 - Debouncing Keypresses with Highlight Synchronization
+**Learning:** When debouncing a user query to reduce expensive UI computations (like iterating through thousands of inventory items), ensure that *all* visual synchronizations (like highlight matchers and empty states) also read from the `debouncedQuery` rather than the active immediate `query`. Failing to do so causes the displayed filtered items to not match the highlighted text, leading to UI jitter.
+**Action/Prevention:** Apply debouncing uniformly across the render pass by creating a unified `debouncedQuery` value in `useMemo` and updating all dependent view properties to consume it, not just the filter operation.

@@ -25,6 +25,7 @@ import {
 import { getRecentReads } from '../../lib/storage';
 import { preloadContent } from '../../lib/bridge';
 import { TiltCard } from './TiltCard';
+import { useDebounce } from '../../hooks/useDebounce';
 
 // Helper to flatten the inventory
 const getAllItems = (): ContentItem[] => {
@@ -121,6 +122,8 @@ export const SearchOverlay = ({
   const recognitionRef = useRef<any>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const activeItemRef = useRef<HTMLDivElement>(null);
+
+  const debouncedQuery = useDebounce(query, 300);
 
   const allItems = useMemo(() => getAllItems(), []);
 
@@ -229,25 +232,25 @@ export const SearchOverlay = ({
   // Reset selected item index on query or category change
   useEffect(() => {
     setSelectedIndex(0);
-  }, [query, activeCategory]);
+  }, [debouncedQuery, activeCategory]);
 
   // Category counts
   const categoryCounts = useMemo(() => {
-    if (!query.trim()) return {};
+    if (!debouncedQuery.trim()) return {};
     const counts: Record<string, number> = { all: 0 };
     allItems.forEach((item) => {
-      if (matchSearchQuery(item, query)) {
+      if (matchSearchQuery(item, debouncedQuery)) {
         counts.all = (counts.all || 0) + 1;
         const cat = item.category === 'shastra' ? 'granthas' : item.category;
         counts[cat] = (counts[cat] || 0) + 1;
       }
     });
     return counts;
-  }, [query, allItems]);
+  }, [debouncedQuery, allItems]);
 
   // Filtered & Ranked Items
   const filteredItems = useMemo(() => {
-    if (!query.trim()) return [];
+    if (!debouncedQuery.trim()) return [];
     const catFilter =
       activeCategory === 'all'
         ? undefined
@@ -263,8 +266,8 @@ export const SearchOverlay = ({
         ? allItems.filter((i) => i.category === catFilter)
         : allItems;
 
-    return searchAndRankItems(pool, query);
-  }, [query, allItems, activeCategory]);
+    return searchAndRankItems(pool, debouncedQuery);
+  }, [debouncedQuery, allItems, activeCategory]);
 
   // Auto scroll highlighted item into view
   useEffect(() => {
@@ -480,7 +483,7 @@ export const SearchOverlay = ({
 
             {/* Content & Results Scroll Area */}
             <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#050b17]/90 backdrop-blur-2xl rounded-2xl border border-amber-500/20 p-3 sm:p-4 shadow-2xl min-h-[300px] max-h-[62vh] flex flex-col">
-              {query.trim() === '' ? (
+              {debouncedQuery.trim() === '' ? (
                 /* Empty Query State: Recents, Popular Queries, and Curated Essentials */
                 <div className="space-y-4 flex-1">
                   {/* Recent Searches (इतिहास) */}
@@ -633,7 +636,7 @@ export const SearchOverlay = ({
                   </div>
                   <div className="space-y-1 max-w-sm">
                     <p className="font-gotu text-sm text-slate-200 font-semibold">
-                      "{query}" के लिए कोई पाठ नहीं मिला
+                      "{debouncedQuery}" के लिए कोई पाठ नहीं मिला
                     </p>
                     <p className="text-xs text-slate-400 font-gotu leading-relaxed">
                       शायद वर्तनी में अंतर हो। आप माइक बटन दबाकर बोल सकते हैं अथवा नीचे दिए गए लोकप्रिय पाठों में से चुनें:
@@ -715,7 +718,7 @@ export const SearchOverlay = ({
                                 isSelected ? 'text-amber-200' : 'text-white group-hover:text-amber-200'
                               }`}
                             >
-                              <HighlightMatch text={item.title} query={query} />
+                              <HighlightMatch text={item.title} query={debouncedQuery} />
                             </h4>
 
                             <div className="flex flex-wrap items-center gap-2 mt-0.5">
@@ -726,13 +729,13 @@ export const SearchOverlay = ({
                               {item.author && (
                                 <span className="text-[11px] text-amber-200/80 font-gotu flex items-center gap-1 truncate">
                                   <User className="w-2.5 h-2.5 text-amber-400" />
-                                  <HighlightMatch text={item.author} query={query} />
+                                  <HighlightMatch text={item.author} query={debouncedQuery} />
                                 </span>
                               )}
 
                               {item.description && (
                                 <span className="text-[11px] text-slate-400 font-gotu truncate max-w-[200px] sm:max-w-[320px]">
-                                  • <HighlightMatch text={item.description} query={query} />
+                                  • <HighlightMatch text={item.description} query={debouncedQuery} />
                                 </span>
                               )}
                             </div>
