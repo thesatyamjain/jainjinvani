@@ -1,0 +1,3 @@
+## 2025-02-23 - Audio Player Accessibility
+**Learning:** The `AudioPlayer.tsx` component extensively used icon-only buttons with tooltips (`title` attributes) for mouse users, but these completely lacked `aria-label` attributes. This rendered the entire media control surface functionally opaque to screen reader users, indicating a pattern where visual tooltips were mistakenly assumed to be sufficient for a11y.
+**Action:** When auditing custom or complex interactive components (like media players or custom toolbars), explicitly verify that every icon-only button possesses an `aria-label` that provides equivalent context to its visual icon or tooltip.
