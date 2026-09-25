@@ -1,0 +1,4 @@
+## 2025-02-28 - Hardcoded 2FA Secret Key
+**Vulnerability:** Found a hardcoded 2FA secret key (`MASTER_2FA_SECRET = 'JINVANISACRED26A'`) in `src/pages/AdminLogin.tsx`. This key is used for TOTP verification, meaning anyone with access to the source code can generate valid 2FA tokens and bypass the second factor of authentication.
+**Learning:** Hardcoded 2FA secrets defeat the purpose of two-factor authentication. Since this is a client-side only static app, the secret must be dynamically generated per browser/session and stored securely in `localStorage` rather than hardcoded in the bundle.
+**Prevention:** Always generate secrets dynamically (`window.crypto.getRandomValues`) and persist them securely via `localStorage` on initial setup. Never hardcode sensitive credentials, keys, or secrets in the client-side bundle.
