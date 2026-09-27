@@ -309,8 +309,32 @@ export async function verifyTOTP(secretBase32: string, userCode: string): Promis
   return false;
 }
 
-// Master 2FA Secret Key (Standard Base32 for Google Authenticator)
-export const MASTER_2FA_SECRET = 'JINVANISACRED26A';
+function getOrGenerate2FASecret(): string {
+  if (typeof window === 'undefined') return 'JINVANISACRED26A';
+
+  let secret = localStorage.getItem('jinvani_admin_2fa_secret');
+  if (!secret) {
+    const is2FAEnabledLegacy = localStorage.getItem('jinvani_admin_2fa_enabled') === 'true';
+    if (is2FAEnabledLegacy) {
+      // Fallback to legacy hardcoded secret so we don't lock out existing admins
+      secret = 'JINVANISACRED26A';
+    } else {
+      // Generate a new secure 16-character Base32 secret
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+      secret = '';
+      const randomValues = new Uint8Array(16);
+      window.crypto.getRandomValues(randomValues);
+      for (let i = 0; i < 16; i++) {
+        secret += chars[randomValues[i] % chars.length];
+      }
+    }
+    localStorage.setItem('jinvani_admin_2fa_secret', secret);
+  }
+  return secret;
+}
+
+// Master 2FA Secret Key (Standard Base32 for Google Authenticator), generated securely and persisted locally
+export const MASTER_2FA_SECRET = getOrGenerate2FASecret();
 export const TOTP_ISSUER = 'Jain Jinvani';
 export const TOTP_ACCOUNT = 'admin';
 export const TOTP_AUTH_URI = `otpauth://totp/${encodeURIComponent(TOTP_ISSUER)}:${encodeURIComponent(TOTP_ACCOUNT)}?secret=${MASTER_2FA_SECRET}&issuer=${encodeURIComponent(TOTP_ISSUER)}`;
