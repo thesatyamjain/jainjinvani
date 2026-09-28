@@ -1,0 +1,3 @@
+## 2024-10-24 - Debouncing Input States Without Stalling UI Feedback
+**Learning:** When adding debouncing to a search input in a React application (like `SearchOverlay.tsx`), debouncing the `onChange` event itself causes the input field to feel sluggish and unresponsive to the user.
+**Action:** Instead of debouncing the state setter, maintain the immediate `query` state for the input field binding (`value={query}`), and create a separate `debouncedQuery` state (via a custom hook like `useDebounce`). Use the `debouncedQuery` for triggering expensive re-calculations (`useMemo`, `useEffect`) and data fetching. This keeps the UI responsive while optimizing performance.
