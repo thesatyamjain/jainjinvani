@@ -310,24 +310,26 @@ export async function verifyTOTP(secretBase32: string, userCode: string): Promis
 }
 
 function getOrGenerate2FASecret(): string {
-  if (typeof window === 'undefined') return 'JINVANISACRED26A';
+  if (typeof window === 'undefined') return '';
 
   let secret = localStorage.getItem('jinvani_admin_2fa_secret');
   if (!secret) {
     const is2FAEnabledLegacy = localStorage.getItem('jinvani_admin_2fa_enabled') === 'true';
     if (is2FAEnabledLegacy) {
-      // Fallback to legacy hardcoded secret so we don't lock out existing admins
-      secret = 'JINVANISACRED26A';
-    } else {
-      // Generate a new secure 16-character Base32 secret
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-      secret = '';
-      const randomValues = new Uint8Array(16);
-      window.crypto.getRandomValues(randomValues);
-      for (let i = 0; i < 16; i++) {
-        secret += chars[randomValues[i] % chars.length];
-      }
+      // Security fix: If a legacy user had 2FA enabled but somehow lost the stored secret,
+      // we gracefully disable 2FA rather than using a hardcoded insecure secret.
+      localStorage.removeItem('jinvani_admin_2fa_enabled');
     }
+
+    // Generate a new secure 16-character Base32 secret
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    secret = '';
+    const randomValues = new Uint8Array(16);
+    window.crypto.getRandomValues(randomValues);
+    for (let i = 0; i < 16; i++) {
+      secret += chars[randomValues[i] % chars.length];
+    }
+
     localStorage.setItem('jinvani_admin_2fa_secret', secret);
   }
   return secret;
