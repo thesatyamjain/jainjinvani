@@ -19,8 +19,8 @@ import {
 } from 'lucide-react';
 import { contentInventory, ContentItem } from '../../data/inventory';
 import {
-  searchAndRankItems,
-  matchSearchQuery,
+  calculateRelevanceScore,
+
   getHighlightedSegments,
 } from '../../utils/searchHelper';
 import { getRecentReads } from '../../lib/storage';
@@ -233,40 +233,38 @@ export const SearchOverlay = ({
     setSelectedIndex(0);
   }, [debouncedQuery, activeCategory]);
 
-  // Category counts
-  const categoryCounts = useMemo(() => {
-    if (!debouncedQuery.trim()) return {};
-    const counts: Record<string, number> = { all: 0 };
+    // 1. Score and sort all items once per query to avoid redundant expensive calculations
+  const scoredItems = useMemo(() => {
+    if (!debouncedQuery.trim()) return [];
+    const results: { item: ContentItem; score: number }[] = [];
     allItems.forEach((item) => {
-      if (matchSearchQuery(item, debouncedQuery)) {
-        counts.all = (counts.all || 0) + 1;
-        const cat = item.category === 'shastra' ? 'granthas' : item.category;
-        counts[cat] = (counts[cat] || 0) + 1;
-      }
+      const score = calculateRelevanceScore(item, debouncedQuery);
+      if (score > 0) results.push({ item, score });
     });
-    return counts;
+    return results.sort((a, b) => b.score - a.score).map((r) => r.item);
   }, [debouncedQuery, allItems]);
 
-  // Filtered & Ranked Items
+  // 2. Category counts based on already matched items
+  const categoryCounts = useMemo(() => {
+    if (!debouncedQuery.trim()) return {};
+    const counts: Record<string, number> = { all: scoredItems.length };
+    scoredItems.forEach((item) => {
+      const cat = item.category === 'shastra' ? 'granthas' : item.category;
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    return counts;
+  }, [debouncedQuery, scoredItems]);
+
+  // 3. Filter the already sorted items by active category
   const filteredItems = useMemo(() => {
     if (!debouncedQuery.trim()) return [];
-    const catFilter =
-      activeCategory === 'all'
-        ? undefined
-        : activeCategory === 'granthas'
-        ? 'granthas'
-        : activeCategory;
+    if (activeCategory === 'all') return scoredItems;
 
-    // Normalizing category match for granthas / shastra
-    const pool =
-      activeCategory === 'granthas'
-        ? allItems.filter((i) => i.category === 'granthas' || i.category === 'shastra')
-        : catFilter
-        ? allItems.filter((i) => i.category === catFilter)
-        : allItems;
-
-    return searchAndRankItems(pool, debouncedQuery);
-  }, [debouncedQuery, allItems, activeCategory]);
+    const isGranthas = activeCategory === 'granthas';
+    return scoredItems.filter((item) =>
+      isGranthas ? (item.category === 'granthas' || item.category === 'shastra') : item.category === activeCategory
+    );
+  }, [debouncedQuery, scoredItems, activeCategory]);
 
   // Auto scroll highlighted item into view
   useEffect(() => {
