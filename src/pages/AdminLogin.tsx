@@ -341,11 +341,12 @@ export const TOTP_AUTH_URI = `otpauth://totp/${encodeURIComponent(TOTP_ISSUER)}:
 
 // Cryptographically Hashed Emergency Recovery Codes (SHA-256)
 // Raw recovery codes are strictly offline secrets and never committed in plaintext.
-export const EMERGENCY_RECOVERY_CODE_HASHES = [
-  '7be95f6ef2c6828ad36a1ef3f48be2226fdee80138e3889c12f946285ca67e56',
-  '272f85b11e0a2bd0e426d1e6233058902c0056e7b65decd1bbe8c00f48916cf2',
-  'd22fdacd4496ce52a143603eb975acf222d85a229fecaa0e0c404dea3f83508f',
-];
+export const EMERGENCY_RECOVERY_CODE_HASHES: string[] = (import.meta as any).env?.VITE_RECOVERY_HASHES
+  ? (import.meta as any).env.VITE_RECOVERY_HASHES.split(',')
+  : [];
+
+
+
 
 // Password Verification against Custom (if changed by user), .env, or Master Hash
 const verifyPassword = async (inputPass: string): Promise<boolean> => {
@@ -4754,51 +4755,18 @@ export const AdminLogin = ({ onBack, onNavigate }: AdminLoginProps) => {
               </p>
             </div>
 
-            {/* 3 Recovery Codes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {[
-                { code: 'JIN-8492-SAFE', key: 'rec1', desc: 'प्राथमिक बैकअप कोड' },
-                { code: 'JIN-3174-OMMM', key: 'rec2', desc: 'द्वितीयक बैकअप कोड' },
-                { code: 'JIN-9518-MOKS', key: 'rec3', desc: 'तृतीयक बैकअप कोड' },
-              ].map((item) => (
-                <div
-                  key={item.key}
-                  className="p-3.5 rounded-2xl bg-slate-950/80 border border-purple-500/30 flex items-center justify-between"
-                >
-                  <div>
-                    <span className="text-[10px] text-purple-300 font-gotu block">{item.desc}</span>
-                    <code className="text-sm font-mono font-bold text-amber-200">{item.code}</code>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => copyGuideText(item.code, item.key, `${item.code} कॉपी हो गया!`)}
-                    className="p-1.5 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 transition-colors cursor-pointer"
-                    title="कोड कॉपी करें"
-                  >
-                    {copiedKey === item.key ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                  </button>
-                </div>
-              ))}
+            {/* Secure Offline Recovery Alert */}
+            <div className="p-4 rounded-2xl bg-slate-950/80 border border-purple-500/30 flex flex-col gap-2">
+              <div className="flex items-center gap-2 text-purple-300 font-gotu">
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                <span className="font-semibold text-sm">रिकवरी कोड्स सुरक्षित तिजोरी (Secure Vault) में हैं</span>
+              </div>
+              <p className="text-xs text-slate-300 font-gotu leading-relaxed">
+                सुरक्षा कारणों से रिकवरी कोड्स को यहाँ प्रदर्शित नहीं किया जाता। कृपया अपने <code className="text-amber-200 px-1">.env</code> फ़ाइल या सर्वर कॉन्फ़िगरेशन (<code className="text-amber-200 px-1">VITE_RECOVERY_HASHES</code>) की जाँच करें, जहाँ आपके कोड्स के हैश सुरक्षित रूप से संग्रहीत हैं।
+              </p>
             </div>
 
-            {/* Crucial Security Explanation */}
-            <div className="p-4 rounded-2xl bg-purple-950/20 border border-purple-500/25 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-purple-200 font-gotu">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>ये कोड कहाँ स्टोर हैं? क्या यह सुरक्षित है? (Security Verification)</span>
-              </div>
-              <p className="text-xs text-slate-300 font-gotu leading-relaxed">
-                यह कोड कोडबेस या क्लाइंट जावास्क्रिप्ट बंडल में <strong>सादे अक्षरों (plaintext) में कभी भी स्टोर नहीं होते</strong>। कोडबेस में केवल इनके क्रिप्टोग्राफिक <strong>SHA-256 हैश</strong> सुरक्षित हैं। 
-              </p>
-              <p className="text-xs text-slate-300 font-gotu leading-relaxed">
-                जब आप लॉगिन में रिकवरी कोड दर्ज करते हैं, तो आपका ब्राउज़र आपके इनपुट को तुरंत हैश करके मिलान करता है। इसलिए इंटरनेट पर कोई भी व्यक्ति पेज का 'Source Code' या 'Inspect Element' करके भी इन कोड्स को नहीं देख सकता।
-              </p>
-              <div className="p-2.5 rounded-xl bg-slate-950/80 border border-white/5 font-mono text-[11px] text-slate-400 space-y-1">
-                <div>Hash 1: <span className="text-slate-300">7be95f6ef2c6828ad36a1ef3f48be2226fdee80138e3889c12f946285ca67e56</span></div>
-                <div>Hash 2: <span className="text-slate-300">272f85b11e0a2bd0e426d1e6233058902c0056e7b65decd1bbe8c00f48916cf2</span></div>
-                <div>Hash 3: <span className="text-slate-300">d22fdacd4496ce52a143603eb975acf222d85a229fecaa0e0c404dea3f83508f</span></div>
-              </div>
-            </div>
+
           </GlassCard>
 
           {/* Section 5: 2FA & Serverless Architecture Details */}
