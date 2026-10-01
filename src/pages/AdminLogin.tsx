@@ -310,7 +310,13 @@ export async function verifyTOTP(secretBase32: string, userCode: string): Promis
 }
 
 // Master 2FA Secret Key (Standard Base32 for Google Authenticator)
-export const MASTER_2FA_SECRET = 'JINVANISACRED26A';
+export const MASTER_2FA_SECRET = import.meta.env.VITE_2FA_SECRET || (() => {
+  const stored = localStorage.getItem('jinvani_admin_2fa_secret');
+  if (stored) return stored;
+  const newSecret = Array.from(window.crypto.getRandomValues(new Uint8Array(10))).map(b => b.toString(36)).join('').slice(0, 16).toUpperCase();
+  localStorage.setItem('jinvani_admin_2fa_secret', newSecret);
+  return newSecret;
+})();
 export const TOTP_ISSUER = 'Jain Jinvani';
 export const TOTP_ACCOUNT = 'admin';
 export const TOTP_AUTH_URI = `otpauth://totp/${encodeURIComponent(TOTP_ISSUER)}:${encodeURIComponent(TOTP_ACCOUNT)}?secret=${MASTER_2FA_SECRET}&issuer=${encodeURIComponent(TOTP_ISSUER)}`;
