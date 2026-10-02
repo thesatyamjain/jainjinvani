@@ -19,7 +19,6 @@ import {
 import { contentInventory, ContentItem } from '../../data/inventory';
 import {
   searchAndRankItems,
-  matchSearchQuery,
   getHighlightedSegments,
 } from '../../utils/searchHelper';
 import { getRecentReads } from '../../lib/storage';
@@ -235,42 +234,40 @@ export const SearchOverlay = ({
     setSelectedIndex(0);
   }, [debouncedQuery, activeCategory]);
 
-  // ⚡ BOLT OPTIMIZATION: Category counts now depend on debouncedQuery to prevent main thread blocking
-  // Category counts
+  // ⚡ BOLT OPTIMIZATION: Calculate search relevance just once for all items
+  const allMatchingItems = useMemo(() => {
+    if (!debouncedQuery.trim()) return [];
+    return searchAndRankItems(allItems, debouncedQuery);
+  }, [debouncedQuery, allItems]);
+
+  // ⚡ BOLT OPTIMIZATION: Derive category counts from already matched items to avoid re-calculating relevance
   const categoryCounts = useMemo(() => {
     if (!debouncedQuery.trim()) return {};
-    const counts: Record<string, number> = { all: 0 };
-    allItems.forEach((item) => {
-      if (matchSearchQuery(item, debouncedQuery)) {
-        counts.all = (counts.all || 0) + 1;
+    const counts: Record<string, number> = { all: allMatchingItems.length };
+    allMatchingItems.forEach((item) => {
+      if (item.category) {
         const cat = item.category === 'shastra' ? 'granthas' : item.category;
         counts[cat] = (counts[cat] || 0) + 1;
       }
     });
     return counts;
-  }, [debouncedQuery, allItems]);
+  }, [debouncedQuery, allMatchingItems]);
 
-  // ⚡ BOLT OPTIMIZATION: Heavy filtering now depends on debouncedQuery to improve typing responsiveness
-  // Filtered & Ranked Items
+  // ⚡ BOLT OPTIMIZATION: Simply filter the already ranked items instead of re-searching when switching categories
   const filteredItems = useMemo(() => {
     if (!debouncedQuery.trim()) return [];
-    const catFilter =
-      activeCategory === 'all'
-        ? undefined
-        : activeCategory === 'granthas'
-        ? 'granthas'
-        : activeCategory;
 
-    // Normalizing category match for granthas / shastra
-    const pool =
-      activeCategory === 'granthas'
-        ? allItems.filter((i) => i.category === 'granthas' || i.category === 'shastra')
-        : catFilter
-        ? allItems.filter((i) => i.category === catFilter)
-        : allItems;
+    if (activeCategory === 'all') {
+      return allMatchingItems;
+    }
 
-    return searchAndRankItems(pool, debouncedQuery);
-  }, [debouncedQuery, allItems, activeCategory]);
+    return allMatchingItems.filter((item) => {
+      if (activeCategory === 'granthas') {
+        return item.category === 'granthas' || item.category === 'shastra';
+      }
+      return item.category === activeCategory;
+    });
+  }, [debouncedQuery, activeCategory, allMatchingItems]);
 
   // Auto scroll highlighted item into view
   useEffect(() => {
