@@ -442,6 +442,7 @@ export const AudioPlayer = ({
                 onClick={() => setIsMinimized(false)}
                 className="w-7 h-7 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                 title="विस्तार करें (Expand)"
+                aria-label="विस्तार करें (Expand)"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
               </button>
@@ -450,6 +451,7 @@ export const AudioPlayer = ({
                 onClick={onClose}
                 className="w-7 h-7 rounded-lg hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 flex items-center justify-center transition-colors cursor-pointer"
                 title="बंद करें (Close)"
+                aria-label="बंद करें (Close)"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -476,6 +478,7 @@ export const AudioPlayer = ({
                   onClick={() => setIsMinimized(true)}
                   className="w-8 h-8 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                   title="छोटा करें (Minimize)"
+                  aria-label="छोटा करें (Minimize)"
                 >
                   <Minimize2 className="w-4 h-4" />
                 </button>
@@ -484,6 +487,7 @@ export const AudioPlayer = ({
                   onClick={onClose}
                   className="w-8 h-8 rounded-lg hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 flex items-center justify-center transition-colors cursor-pointer"
                   title="बंद करें (Close)"
+                  aria-label="बंद करें (Close)"
                 >
                   <X className="w-4 h-4" />
                 </button>
