@@ -1,4 +1,4 @@
-## 2024-05-14 - Vite Environment Variable Leak
-**Vulnerability:** The VITE_ADMIN_PASSWORD was being read as a plaintext environment variable. In Vite, any environment variable prefixed with VITE_ is statically replaced with its value during the build process, thereby exposing the plaintext password to the public bundle.
-**Learning:** Client-side bundles should never include plaintext passwords or secrets as environment variables, even if they are only used to verify an input on the client-side. The public bundler will expose them.
-**Prevention:** Always hash the password and provide the hash as the environment variable (e.g., VITE_ADMIN_PASSWORD_HASH), then check if the hash of the user input matches the provided hash.
+## 2025-02-24 - Hardcoded 2FA Secret in Static Client Bundle
+**Vulnerability:** A static 2FA TOTP master secret (`JINVANISACRED26A`) was hardcoded in `src/pages/AdminLogin.tsx`.
+**Learning:** Hardcoding secrets in a client-side bundle exposes them to anyone who accesses the application, completely compromising the security mechanism for all instances. For client-side apps without a backend, sensitive state like a unique 2FA secret must be dynamically generated per client using secure RNG (`window.crypto.getRandomValues`) and stored securely (e.g., in `localStorage`).
+**Prevention:** Never commit plaintext secrets to the repository or embed them in static client code. Use cryptographic generation and local persistence for instance-specific secrets. When migrating away from a hardcoded secret, gracefully disable the feature (e.g., `localStorage.removeItem('jinvani_admin_2fa_enabled')`) to avoid locking out existing users whose previously generated OTPs will no longer match the newly generated secret.
