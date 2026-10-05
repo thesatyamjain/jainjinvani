@@ -756,6 +756,7 @@ export const MoreMenu = ({ onNavigate }: MoreMenuProps) => {
                     transition={{ type: 'spring', stiffness: 500, damping: 25 }}
                     onClick={() => setSelectedId(null)}
                     className="p-1.5 sm:p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-colors cursor-pointer shrink-0"
+                    aria-label="बंद करें"
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
