@@ -399,12 +399,13 @@ export const SearchOverlay = ({
                     type="button"
                     whileTap={{ scale: 0.9 }}
                     onClick={toggleVoiceSearch}
-                    className={`p-1.5 rounded-xl transition-all cursor-pointer select-none ${
+                    className={`p-1.5 rounded-xl transition-all cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/80 ${
                       isListening
                         ? 'bg-rose-500/25 border border-rose-400 text-rose-300 animate-pulse'
                         : 'bg-white/5 hover:bg-amber-500/20 text-slate-400 hover:text-amber-200 border border-white/10'
                     }`}
                     title={isListening ? 'बोलना बंद करें' : 'हिंदी में बोलकर खोजें'}
+                    aria-label={isListening ? 'बोलना बंद करें' : 'हिंदी में बोलकर खोजें'}
                   >
                     {isListening ? (
                       <MicOff className="w-4 h-4 text-rose-300 animate-bounce" />
@@ -423,8 +424,9 @@ export const SearchOverlay = ({
                       setQuery('');
                       inputRef.current?.focus();
                     }}
-                    className="p-1.5 hover:bg-white/10 rounded-xl transition-colors text-slate-400 hover:text-white cursor-pointer select-none"
+                    className="p-1.5 hover:bg-white/10 rounded-xl transition-colors text-slate-400 hover:text-white cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/80"
                     title="साफ़ करें"
+                    aria-label="साफ़ करें"
                   >
                     <X className="w-4 h-4" />
                   </motion.button>
@@ -435,8 +437,9 @@ export const SearchOverlay = ({
                   type="button"
                   whileTap={{ scale: 0.9 }}
                   onClick={onClose}
-                  className="p-1.5 hover:bg-white/10 rounded-xl transition-colors text-slate-400 hover:text-rose-200 cursor-pointer select-none ml-0.5"
+                  className="p-1.5 hover:bg-white/10 rounded-xl transition-colors text-slate-400 hover:text-rose-200 cursor-pointer select-none ml-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/80"
                   title="बंद करें (Esc)"
+                  aria-label="बंद करें (Esc)"
                 >
                   <span className="hidden sm:inline-block text-[10px] font-mono text-slate-400 bg-white/10 px-1.5 py-0.5 rounded mr-1">
                     ESC
