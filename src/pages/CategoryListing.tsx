@@ -23,6 +23,7 @@ import {
   Music,
 } from 'lucide-react';
 import { contentInventory, ContentItem, subCategoryMap, SubCategoryDef } from '../data/inventory';
+import { useDebounce } from '../hooks/useDebounce';
 import { matchSearchQuery } from '../utils/searchHelper';
 import { updateCategorySeo } from '../utils/seoHelper';
 import { preloadContent } from '../lib/bridge';
@@ -301,6 +302,7 @@ export const CategoryListing = ({
   onBack,
 }: CategoryListingProps) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const debouncedSearchQuery = useDebounce(searchQuery, 250);
   const [activeSubCategory, setActiveSubCategory] = useState<string>(initialSubCategory || 'all');
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
 
@@ -326,14 +328,14 @@ export const CategoryListing = ({
         activeSubCategory === 'all' || item.subCategory === activeSubCategory;
 
       // Search match
-      const query = searchQuery.trim();
+      const query = debouncedSearchQuery.trim();
       if (!query) return matchesSubCategory;
 
       const matchesSearch = matchSearchQuery(item, query);
 
       return matchesSubCategory && matchesSearch;
     });
-  }, [items, activeSubCategory, searchQuery]);
+  }, [items, activeSubCategory, debouncedSearchQuery]);
 
   // Compute counts per subcategory
   const subCategoryCounts = useMemo(() => {
