@@ -1,3 +1,7 @@
 ## 2024-05-23 - Debouncing Search Overlay Queries
 **Learning:** In the `SearchOverlay` component, filtering content directly on every keystroke (`query`) blocks the main thread because the calculation of `categoryCounts` and `filteredItems` are synchronous and depend directly on the query state. This leads to input lag and UI stuttering on low-end devices.
 **Action:** Debounced the search `query` value and replaced instances of `query` in heavy operations (like `categoryCounts`, `filteredItems` and complex UI logic) with `debouncedQuery`. This allows the input state to update instantly while deferring expensive operations to slightly later, making the UI feel smoother.
+
+## 2024-06-25 - Redundant Calculations in Search Rendering
+**Learning:** Derived states such as `categoryCounts` and `filteredItems` in the search implementation recalculate expensive relevance scoring and string matching (`searchAndRankItems`, `matchSearchQuery`) individually per key stroke and per category change. This duplicates work for items that haven't changed and unnecessarily loads the main thread leading to input delay.
+**Action:** Created a central `baseSearchResults` state using `useMemo` that evaluates the query across the entire inventory once per query change. `categoryCounts` and `filteredItems` are then cheaply derived from this cached base, cutting operations by at least 50% when searching or switching categories.
