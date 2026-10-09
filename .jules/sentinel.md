@@ -2,3 +2,8 @@
 **Vulnerability:** The VITE_ADMIN_PASSWORD was being read as a plaintext environment variable. In Vite, any environment variable prefixed with VITE_ is statically replaced with its value during the build process, thereby exposing the plaintext password to the public bundle.
 **Learning:** Client-side bundles should never include plaintext passwords or secrets as environment variables, even if they are only used to verify an input on the client-side. The public bundler will expose them.
 **Prevention:** Always hash the password and provide the hash as the environment variable (e.g., VITE_ADMIN_PASSWORD_HASH), then check if the hash of the user input matches the provided hash.
+
+## 2024-05-24 - [Mutation XSS / DOMParser Bypass in Custom HTML Sanitizer]
+**Vulnerability:** A custom HTML sanitizer (`src/utils/sanitizeHtml.ts`) used `DOMParser` to parse and strip unwanted tags. However, it used `documentFragment.body.querySelectorAll('*')` to find and sanitize tags. This is vulnerable to mXSS because the inner contents of tags like `<template>` are parsed into a separate document fragment and are hidden from the primary query. A payload like `<template><script>alert(1)</script></template>` completely bypasses the sanitizer.
+**Learning:** `querySelectorAll('*')` does not pierce special elements like `<template>`. Relying on it for iteration allows hidden, unsanitized DOM branches to be serialized back into HTML via `innerHTML`, causing XSS when rendered with `dangerouslySetInnerHTML`.
+**Prevention:** Always perform a pre-pass to query and explicitly remove inherently dangerous or content-masking elements (e.g., `template`, `noscript`, `math`, `svg`, `script`, `iframe`) *before* attempting generic unallowed-tag unwrapping or traversal on the parsed DOM.
