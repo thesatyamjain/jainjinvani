@@ -235,22 +235,28 @@ export const SearchOverlay = ({
     setSelectedIndex(0);
   }, [debouncedQuery, activeCategory]);
 
+  // ⚡ BOLT OPTIMIZATION: Compute all ranked items once per debounced query to prevent redundant relevance recalculations
+  const allRankedItems = useMemo(() => {
+    if (!debouncedQuery.trim()) return [];
+    return searchAndRankItems(allItems, debouncedQuery);
+  }, [debouncedQuery, allItems]);
+
   // ⚡ BOLT OPTIMIZATION: Category counts now depend on debouncedQuery to prevent main thread blocking
+  // ⚡ BOLT OPTIMIZATION: Derive counts from already filtered items instead of re-matching everything
   // Category counts
   const categoryCounts = useMemo(() => {
     if (!debouncedQuery.trim()) return {};
     const counts: Record<string, number> = { all: 0 };
-    allItems.forEach((item) => {
-      if (matchSearchQuery(item, debouncedQuery)) {
-        counts.all = (counts.all || 0) + 1;
-        const cat = item.category === 'shastra' ? 'granthas' : item.category;
-        counts[cat] = (counts[cat] || 0) + 1;
-      }
+    allRankedItems.forEach((item) => {
+      counts.all = (counts.all || 0) + 1;
+      const cat = item.category === 'shastra' ? 'granthas' : item.category;
+      counts[cat] = (counts[cat] || 0) + 1;
     });
     return counts;
-  }, [debouncedQuery, allItems]);
+  }, [debouncedQuery, allRankedItems]);
 
   // ⚡ BOLT OPTIMIZATION: Heavy filtering now depends on debouncedQuery to improve typing responsiveness
+  // ⚡ BOLT OPTIMIZATION: Derive filtered items directly from the pre-ranked allRankedItems
   // Filtered & Ranked Items
   const filteredItems = useMemo(() => {
     if (!debouncedQuery.trim()) return [];
@@ -262,15 +268,14 @@ export const SearchOverlay = ({
         : activeCategory;
 
     // Normalizing category match for granthas / shastra
-    const pool =
-      activeCategory === 'granthas'
-        ? allItems.filter((i) => i.category === 'granthas' || i.category === 'shastra')
-        : catFilter
-        ? allItems.filter((i) => i.category === catFilter)
-        : allItems;
-
-    return searchAndRankItems(pool, debouncedQuery);
-  }, [debouncedQuery, allItems, activeCategory]);
+    if (activeCategory === 'granthas') {
+      return allRankedItems.filter((i) => i.category === 'granthas' || i.category === 'shastra');
+    } else if (catFilter) {
+      return allRankedItems.filter((i) => i.category === catFilter);
+    } else {
+      return allRankedItems;
+    }
+  }, [debouncedQuery, allRankedItems, activeCategory]);
 
   // Auto scroll highlighted item into view
   useEffect(() => {
